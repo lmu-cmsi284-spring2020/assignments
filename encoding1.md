@@ -33,6 +33,12 @@ _Do not veer from the format specified by the TSV file:_ Discrepancies in format
 
 ### Providing Manual Work
 It has been stated that you are to work on these exercises _without_ the aid of a computer. To provide evidence that you have done this, take pictures of your manual work (as shown in this repository’s example) and submit those as well. This manual work not only shows that you did these exercises by hand but also provides a basis for partial credit, if necessary.
+- File formats for your manual work are now restricted to JPEG, PNG, or PDF only
+- Name your files _manual-x_ where _x_ is a number indicating the correct sequence for your work (i.e., don’t mix things up—it makes things harder to find). So you should have files named _manual-1.jpg_, _manual-1.png_, _manual-2.pdf_, etc. only.
+
+Diverging from any of these specifications will incur a general deduction on top of the overall score.
+
+Here’s another way to think about your submission: _Your submitted files should be named almost exactly like the files in this repository, except without the prefix **sample-**._
 
 ## How to Turn it In
 Commit your _solutions.tsv_ file and pictures of your manual work to this repository.

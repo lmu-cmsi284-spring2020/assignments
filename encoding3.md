@@ -28,6 +28,8 @@ When formatting your IEEE 754 answers:
 - Do not use spaces in the binary portion of the “binary scientific notation” format
 - Write the multiplication operator `x` and the power of 2 exactly as shown
 - Preserve all parts of the “binary scientific notation” expression, even if its value is 1.0 (and write it that way if so!)
+- For decimal answers that are integers, include one trailing zero after the decimal point (e.g., 42.0)
+- For decimal answers with magnitude < 1, include one leading zero before the decimal point (e.g., -0.25)
 
 When formatting your character answers:
 - Adhere to the byte count specified by the relevant encoding scheme

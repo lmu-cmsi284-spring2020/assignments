@@ -1,7 +1,7 @@
 **CMSI 284** Computer System Organization/Systems Programming, Spring 2020
 
 # Assignment 0319
-Time to try your hand at some rudimentary C programming. This set provides a look at how UTF-8 encoding works in practice and also has a touch of music theory to keep things a little interesting.
+Time to try your hand at some rudimentary C programming. This set provides a look at how UTF-8 encoding works in practice and also has a touch of music theory to keep things from being too “computer-y.”
 
 ## Background Reading
 Pretty much all of the information you need can be found in Dr. Toal’s [Introduction to C](http://cs.lmu.edu/~ray/notes/c) page, as well as many other C programming sites on the web.
@@ -10,18 +10,21 @@ Pretty much all of the information you need can be found in Dr. Toal’s [Introd
 Make sure to refer to [c-setup.md](./c-setup.md) for guidelines on how to set yourself up for C programming.
 
 ## C-Game Warmup
-Once you’re all set up with your Ubuntu machine, read through Dr. Toal’s [Introduction to C](http://cs.lmu.edu/~ray/notes/c), typing and running the sample programs provided there. Experiment with them by making some changes here and there to see what happens. Bring any questions or points of confusion back to class ASAP.
+Once you’re all set up with your Ubuntu machine (or other C programming environment), read through Dr. Toal’s [Introduction to C](http://cs.lmu.edu/~ray/notes/c), typing and running the sample programs provided there. Experiment with them by making some changes to see what happens. Bring any questions or points of confusion back to class ASAP.
 
 ## For Submission: Oh Say Can You C
 Write the requested C programs. Note that most of these programs are specified such that:
 * You are asked to write a _C function_ that performs a particular task, then
 * Write a `main` function that calls this function and displays its results.
 _Follow such specifications exactly._ It models a best practice when writing more complex software, and for some of the requested programs, you might find that a function you wrote earlier may be useful in others… (nudge nudge hint hint)
+    * The `main` function checks the validity of user input, displaying the specified error message and exiting as appropriate
+    * The `main` function then calls the requested function with all user input _already converted and validated_ as appropriate
+    * So in summary: `main` checks for user input correctness, and the requested function performs the actual calculation/computation
 
 In many cases, one or more starter files have been provided. Some sections of these files are meant to be edited, while others are given for you to use without modification. Take note of the instructions and comments so that you know which is which.
 
 As a quick reference, the requested programs are:
-* [_codepoint-to-utf8.c_](#codepoint-to-utf8c)
+* [_code-point-to-utf8.c_](#code-point-to-utf8c)
 * [_split-string-at-index.c_](#split-string-at-indexc)
 * [_print-max-note-lengths.c_](#print-max-note-lengthsc)
 * [_get-note-index.c_](#get-note-indexc)
@@ -30,8 +33,8 @@ As a quick reference, the requested programs are:
 * [_print-chord.c_](#print-chordc)
 * [_chord.c_](#chordc)
 
-### _codepoint-to-utf8.c_
-A complete, working program called _codepoint-to-utf8.c_ is part of this repository. That program adapts the pseudocode `to_utf_8` function seen in Dr. Toal’s [Character Encoding](https://cs.lmu.edu/~ray/notes/charenc/) page into an actual function called `emit_utf_8`. The given version of _codepoint-to-utf8.c_ takes one code point as a command line argument (in the standard `U+(code point in hex)` notation) and sends its UTF-8 encoded version to standard output.
+### _code-point-to-utf8.c_
+A complete, working program called _code-point-to-utf8.c_ is part of this repository. That program adapts the pseudocode `to_utf_8` function seen in Dr. Toal’s [Character Encoding](https://cs.lmu.edu/~ray/notes/charenc/) page into an actual function called `emit_utf_8`. The given version of _code-point-to-utf8.c_ takes one code point as a command line argument (in the standard `U+(code point in hex)` notation) and sends its UTF-8 encoded version to standard output.
 
 With most modern terminal applications (definitely Ubuntu’s), emitting UTF-8 directly to standard output should display the corresponding glyphs precisely as you would expect, including emoji. Pretty fun if you consider that these terminals otherwise look quite technical and dry. 🤓😎🕺🏽💃🏼
 
@@ -41,25 +44,24 @@ Also, in order to see glyphs for graphemes (in terminals that support them), mak
 
 Sample program invocation and output (the exact glyphs that appear may vary depending on the way that your terminal renders UTF-8):
 
-    $ ./codepoint-to-utf8 U+0048 U+0045 U+004C U+004C U+004F
+    $ ./code-point-to-utf8 U+0048 U+0045 U+004C U+004C U+004F
     HELLO
 
-    $ ./codepoint-to-utf8 U+26F2 U+26F3 U+1F574 weh U+2203 U+2234 U+FFFFFF
+    $ ./code-point-to-utf8 U+26F2 U+26F3 U+1F574 weh U+2203 U+2234 U+FFFFFF
     ⛲⛳🕴(weh incorrect format)∃∴(00FFFFFF code point is too large)
 
-    $ ./codepoint-to-utf8
+    $ ./code-point-to-utf8
     This program requires one or more command line arguments,
     one for each code point to encode as UTF-8.
 
-    $ ./codepoint-to-utf8 U+1F469 U+1F3FD U+200D U+2695 U+FE0F
+    $ ./code-point-to-utf8 U+1F469 U+1F3FD U+200D U+2695 U+FE0F
     👩🏽‍⚕️
 
-    $ ./codepoint-to-utf8 U+1F1E8 U+1F1FB
+    $ ./code-point-to-utf8 U+1F1E8 U+1F1FB
     🇨🇻
 
 
 ### _split-string-at-index.c_
-
 Implement the following function:
 ```c
 void split_string_at_index(char* string, int index, char* left, char* right)
@@ -69,7 +71,7 @@ This function takes the given `string` then copies the substring from `0` to `in
 
 _split-string-at-index.c_ should then demonstrate this functionality by accepting a string and an index as command line arguments, calling `split_string_at_index` accordingly, and displaying the results.
 
-To simplify implementation, _split-string-at-index.c_ has been started for you. The implementation also includes a handy `is_non_negative_numeral` function that will check whether a string expresses a numeric value ≥ 0.
+To simplify implementation, the `main` function for _split-string-at-index.c_ has been done for you. The implementation also includes a handy `is_non_negative_numeral` function that will check whether a string expresses a numeric value ≥ 0.
 
 As written, the `main` function only has room for substrings of length 15, and checks to make sure that the arguments comply with this limit.
 
@@ -325,7 +327,7 @@ This assignment is scored according to outcomes _2a_, _2b_, and _4a_ to _4f_ in 
 
 | Category | Points | Outcomes |
 | -------- | -----: | -------- |
-| _codepoint-to-utf8.c_ | 5 points total | |
+| _code-point-to-utf8.c_ | 5 points total | |
 | • Compiles and runs without unexpected errors | 1 point | _4a_, _4d_ |
 | • Correct program output | 3 points | _2a_, _2b_, _4a_, _4d_ |
 | • Correct handling of invalid user input | 1 point | _2a_, _2b_, _4a_, _4d_ |

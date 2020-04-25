@@ -9,4 +9,4 @@ This repository hosts a public copy of the assignment write-ups for this course 
 - [Assignment 0225](./encoding3.md) Encoding drills 3
 - [Assignment 0319](./oh-say-can-you-c.md) C programs 1: Oh Say Can You C
 - [Assignment 0423](./wedd-include-c-remony.md) C programs 2 + some assembly: Wedd-include C-remony
-- **Assignment 0505** More assembly + mixed language programs
+- [Assignment 0505](./codevengers-assemble.md) More assembly + mixed language programs: Codevengers Assemble!
